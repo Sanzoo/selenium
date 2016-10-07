@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 while True:
-    #driver = webdriver.PhantomJS()
+    #prdo driver = webdriver.PhantomJS()
     driver = webdriver.PhantomJS(service_args=['--ssl-protocol=any'])
     driver.maximize_window()
     #driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
