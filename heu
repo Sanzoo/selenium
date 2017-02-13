@@ -1,0 +1,30 @@
+import smtplib
+import sys, traceback
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+import time
+import codecs
+
+#driver = webdriver.Firefox()
+driver = webdriver.PhantomJS('C:/Users/KRZL4027/Documents/MyFolder/Betfair/phantomjs-2.0.0-windows/bin/phantomjs.exe')
+
+driver.get('https://zlavy.heureka.sk/produkty/dom-a-zahrada/')
+n=1
+with open('C:/Users/KRZL4027/Desktop/heureka_output.txt', 'a',encoding="utf-8") as file:
+    for i in range(224):
+        l=[]
+        print(n)
+        for i in driver.find_elements_by_class_name("item"):
+            t=i.text
+            l.append(t)
+        for j in l:
+            file.write(j.replace("\n",";")+"\n")
+        elem = driver.find_element_by_class_name("next")
+        elem.click()
+        time.sleep(3)
+        n+=1
+
+driver.quit()
